@@ -3,6 +3,7 @@ package com.jsp.amms.serviceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import com.jsp.amms.entity.Actor;
 import com.jsp.amms.mapper.ActorMapper;
@@ -11,7 +12,7 @@ import com.jsp.amms.requestedto.ActorRequest;
 import com.jsp.amms.responsedto.ActorResponse;
 import com.jsp.amms.service.ActorService;
 import com.jsp.amms.utility.ResponseStructure;
-
+@Service
 public class ActorServiceImpl implements ActorService{
 	
 	@Autowired
@@ -24,6 +25,7 @@ public class ActorServiceImpl implements ActorService{
 	public ResponseEntity<ResponseStructure<ActorResponse>> addActors(ActorRequest actorRequest) {
 		
 		Actor actor =actorMapper.mapToActorRequest(actorRequest, new Actor());
+		
 		actor = actorRepository.save(actor);
 		
 		return ResponseEntity.status(HttpStatus.CREATED)
