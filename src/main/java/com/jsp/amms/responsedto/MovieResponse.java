@@ -13,12 +13,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ActorResponse {
+public class MovieResponse {
 	
-	private int actorId;
-	private String name;
-	private String dateOfBirth;
-	private String gender;
-	private String nationality;
+	private int movieId;
+	private String title;
+	private String releaseDate;
+	private String genre;
+	private int durationInMinutes;
+	private double ratingIMDb;
 
 }

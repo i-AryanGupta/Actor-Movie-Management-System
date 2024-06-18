@@ -1,7 +1,9 @@
 package com.jsp.amms.entity;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,12 +26,12 @@ public class Movie {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int movieId;
 	private String title;
-	private Date releaseDate;
+	private String releaseDate;
 	private String genre;
 	private int durationInMinutes;
 	private double ratingIMDb;
 	
-	@ManyToMany
-	private List<Actor> actor;
+	@ManyToMany (mappedBy = "assignedMovie")
+	private Set<Actor> assignedActor = new HashSet<>();
 
 }
