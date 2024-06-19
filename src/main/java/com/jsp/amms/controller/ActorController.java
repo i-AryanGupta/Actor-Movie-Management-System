@@ -1,8 +1,14 @@
 package com.jsp.amms.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +30,31 @@ public class ActorController {
 	{
 		return actorService.addActors(requestActor);	
 	}
+	
+	@PutMapping("/movies/{movieId}/actors/{actorId}")
+	public ResponseEntity<ResponseStructure<ActorResponse>> assignMovieToActor(@PathVariable int movieId, @PathVariable int actorId)
+	{
+		return actorService.assignMovieToActor(movieId, actorId);
+	}
+	
+	@PutMapping("/actors/{actorId}")
+	public ResponseEntity<ResponseStructure<ActorResponse>> updateActor(@RequestBody ActorRequest actorRequest, @PathVariable int actorId)
+	{
+		return actorService.updateActor(actorRequest, actorId);
+	}
+	
+	@GetMapping("/actors")
+	public ResponseEntity<ResponseStructure<List<ActorResponse>>> actorFindAll()
+	{
+		return actorService.actorFindAll();
+	}
+	
+	@DeleteMapping("/actors/{actorId}")
+	public ResponseEntity<ResponseStructure<ActorResponse>> actorDelete(@PathVariable int actorId)
+	{
+		return actorService.actorDelete(actorId);
+	}
+	
 	
 	
 	

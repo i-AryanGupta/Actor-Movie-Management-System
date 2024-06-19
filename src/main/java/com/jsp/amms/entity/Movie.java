@@ -1,9 +1,8 @@
 package com.jsp.amms.entity;
 
-import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,6 +30,7 @@ public class Movie {
 	private int durationInMinutes;
 	private double ratingIMDb;
 	
+	@JsonIgnore
 	@ManyToMany (mappedBy = "assignedMovie")
 	private Set<Actor> assignedActor = new HashSet<>();
 
