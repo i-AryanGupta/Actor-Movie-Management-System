@@ -18,6 +18,7 @@ import com.jsp.amms.repository.ActorRepository;
 import com.jsp.amms.repository.MovieRepository;
 import com.jsp.amms.requestedto.ActorRequest;
 import com.jsp.amms.responsedto.ActorResponse;
+import com.jsp.amms.responsedto.MovieResponse;
 import com.jsp.amms.service.ActorService;
 import com.jsp.amms.utility.ResponseStructure;
 @Service
@@ -82,6 +83,20 @@ public class ActorServiceImpl implements ActorService{
 		}).orElseThrow(() -> new ActorNotFoundException("Actor not found"));
 
 	}
+	
+	@Override
+	public ResponseEntity<ResponseStructure<ActorResponse>> actorFind(int actorId) {
+		return actorRepository.findById(actorId).map(actor ->{
+			ActorResponse response = actorMapper.mapTOActorResponse(actor);
+			
+			 return ResponseEntity.status(HttpStatus.FOUND)
+						.body(new ResponseStructure<ActorResponse>()
+								.setData(response)
+								.setMessage("Actor Found")
+								.setStatus(HttpStatus.FOUND.value()));
+				}).orElseThrow(() -> new ActorNotFoundException("Actor not found"));
+			
+	}
 
 	@Override
 	public ResponseEntity<ResponseStructure<List<ActorResponse>>> actorFindAll() {
@@ -108,7 +123,9 @@ public class ActorServiceImpl implements ActorService{
 								.setData(actorMapper.mapTOActorResponse(actor))
 								.setMessage("Actor Deleted")
 								.setStatus(HttpStatus.OK.value()));
-		}).orElseThrow(() -> new ActorNotFoundException(" Actor Deleted"));
+		}).orElseThrow(() -> new ActorNotFoundException(" Actor not found"));
 	}
+
+	
 
 }

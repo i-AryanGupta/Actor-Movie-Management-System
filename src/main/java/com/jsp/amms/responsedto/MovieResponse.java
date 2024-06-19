@@ -1,6 +1,9 @@
 package com.jsp.amms.responsedto;
 
 import java.util.Date;
+import java.util.Set;
+
+import com.jsp.amms.entity.Actor;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,5 +24,6 @@ public class MovieResponse {
 	private String genre;
 	private int durationInMinutes;
 	private double ratingIMDb;
+	private Set<Actor> assignedActor;
 
 }

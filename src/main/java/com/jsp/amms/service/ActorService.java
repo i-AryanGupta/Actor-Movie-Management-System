@@ -20,4 +20,6 @@ public interface ActorService {
 
 	ResponseEntity<ResponseStructure<ActorResponse>> actorDelete(int actorId);
 
+	ResponseEntity<ResponseStructure<ActorResponse>> actorFind(int actorId);
+
 }

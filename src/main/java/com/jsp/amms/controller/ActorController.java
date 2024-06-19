@@ -43,6 +43,12 @@ public class ActorController {
 		return actorService.updateActor(actorRequest, actorId);
 	}
 	
+	@GetMapping("/actors/{actorId}")
+	public ResponseEntity<ResponseStructure<ActorResponse>> actorFind(@PathVariable int actorId)
+	{
+		return actorService.actorFind(actorId);
+	}
+	
 	@GetMapping("/actors")
 	public ResponseEntity<ResponseStructure<List<ActorResponse>>> actorFindAll()
 	{

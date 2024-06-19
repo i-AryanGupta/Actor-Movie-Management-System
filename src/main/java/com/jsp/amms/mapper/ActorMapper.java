@@ -27,6 +27,7 @@ public class ActorMapper {
 				.dateOfBirth(actor.getDateOfBirth())
 				.gender(actor.getGender())
 				.nationality(actor.getNationality())
+				.assignedMovie(actor.getAssignedMovie())
 				.build();
 	}
 

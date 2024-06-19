@@ -29,6 +29,7 @@ public class MovieMapper {
 				.durationInMinutes(movie.getDurationInMinutes())
 				.genre(movie.getGenre())
 				.ratingIMDb(movie.getRatingIMDb())
+				.assignedActor(movie.getAssignedActor())
 				.build();
 	}
 
