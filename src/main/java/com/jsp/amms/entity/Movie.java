@@ -1,11 +1,14 @@
 package com.jsp.amms.entity;
 
-import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,9 +25,13 @@ public class Movie {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int movieId;
 	private String title;
-	private Date releaseDate;
+	private String releaseDate;
 	private String genre;
 	private int durationInMinutes;
 	private double ratingIMDb;
+	
+	@JsonIgnore
+	@ManyToMany (mappedBy = "assignedMovie")
+	private Set<Actor> assignedActor = new HashSet<>();
 
 }
